@@ -29,8 +29,11 @@ class Command(BaseCommand):
       elif(opcion == 3):
         usuario = raw_input("Ingrese su usuario: ")
         email = raw_input("Ingrese su email: ")
-        login = User.objects.get(username = usuario,  email = email)
-        print("bienvenido: " + login.username)
+        try:
+          login = User.objects.get(username = usuario,  email = email)
+          print("bienvenido: " + login.username)
+        except:
+          ("Oops! nose encontro el usuario")
       
       elif(opcion == 4):
         print("hasta luego")

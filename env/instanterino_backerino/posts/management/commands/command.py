@@ -7,7 +7,8 @@ class Command(BaseCommand):
   def handle(self, *args, **kwargs):
     menuPrincipal = True
     menuPersonal = False
-    while(True):
+    verdadero = True
+    while(verdadero):
       while(menuPrincipal):
         print("Bienvenido al menu")
         print("1. Crear Usuario")
@@ -43,6 +44,7 @@ class Command(BaseCommand):
         
         elif(opcion == 4):
           print("hasta luego")
+          verdadero= False
           break
 
       while(menuPersonal):
@@ -71,6 +73,10 @@ class Command(BaseCommand):
           post_deleteado_id = input("Ingrese el id del post que desea borrar: ")
           post_deleteado = Post.objects.get(id = post_deleteado_id)
           post_deleteado.delete()
+        if(opcionPersonal == 4):
+          print("Adios")
+          menuPersonal= False
+          menuPrincipal = True
           
 
 
